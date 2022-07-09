@@ -1,0 +1,47 @@
+{
+    "name": "ryancco/canon",
+    "description": "Generate files from templates",
+    "keywords": [
+        "ryancco",
+        "canon"
+    ],
+    "homepage": "https://github.com/ryancco/canon",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan Colson",
+            "email": "ryan@ryanc.co",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "league/flysystem": "^3.0",
+        "twig/twig": "^3.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "league/flysystem-memory": "^3.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ryancco\\Canon\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ryancco\\Canon\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
