@@ -20,11 +20,8 @@ composer require [--dev] ryancco/canon
 
 ```php
 use Ryancco\Canon;
-use Ryancco\Canon\Compilers\NativeCompiler;
-use League\Flysystem\Filesystem;
-use League\Flysystem\Local\LocalFilesystemAdapter;
 
-$canon = new Canon(new Filesystem(new LocalFilesystemAdapter(__DIR__)));
+$canon = new Canon($filesystem);
 
 // using a template file
 $canon->generate('hello-world.txt', 'filename.out', ['name' => 'World']);
@@ -41,7 +38,7 @@ composer test
 
 ## Changelog
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+Please see the [Release Notes](../../releases) for more information on what has changed recently.
 
 ## Credits
 
