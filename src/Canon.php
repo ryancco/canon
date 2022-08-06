@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace Ryancco\Canon;
 
 use League\Flysystem\Filesystem;
-use Ryancco\Canon\Compilers\TwigCompiler;
+use Ryancco\Canon\Compilers\NativeCompiler;
 use Ryancco\Canon\Contracts\Compiler;
-use Twig\Environment;
-use Twig\Loader\ArrayLoader;
 
 class Canon
 {
@@ -18,7 +16,7 @@ class Canon
         protected ?Filesystem $outputFilesystem = null
     ) {
         if ($this->compiler === null) {
-            $this->compiler = new TwigCompiler(new Environment(new ArrayLoader([])));
+            $this->compiler = new NativeCompiler();
         }
 
         if ($this->outputFilesystem === null) {
