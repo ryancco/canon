@@ -7,7 +7,6 @@ namespace Ryancco\Canon\Tests;
 use Illuminate\Filesystem\Filesystem as IlluminateFilesystem;
 use Illuminate\View\Compilers\BladeCompiler as Blade;
 use League\Flysystem\Filesystem;
-use League\Flysystem\InMemory\InMemoryFilesystemAdapter;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 use PHPUnit\Framework\TestCase;
 use Ryancco\Canon\Canon;
