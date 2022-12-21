@@ -11,17 +11,9 @@ use Ryancco\Canon\Contracts\Compiler;
 class Canon
 {
     public function __construct(
-        protected Filesystem $inputFilesystem,
-        protected ?Compiler $compiler = null,
-        protected ?Filesystem $outputFilesystem = null
+        protected Filesystem $filesystem,
+        protected Compiler $compiler = new NativeCompiler()
     ) {
-        if ($this->compiler === null) {
-            $this->compiler = new NativeCompiler();
-        }
-
-        if ($this->outputFilesystem === null) {
-            $this->outputFilesystem = $this->inputFilesystem;
-        }
     }
 
     /**
@@ -36,10 +28,10 @@ class Canon
      */
     public function generate(string $template, string $filename, array $data = []): void
     {
-        $template = $this->inputFilesystem->fileExists($template)
-            ? $this->inputFilesystem->read($template)
+        $template = $this->filesystem->fileExists($template)
+            ? $this->filesystem->read($template)
             : $template;
 
-        $this->outputFilesystem->write($filename, $this->compiler->compile($template, $data));
+        $this->filesystem->write($filename, $this->compiler->compile($template, $data));
     }
 }

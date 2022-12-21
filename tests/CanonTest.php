@@ -58,24 +58,16 @@ class CanonTest extends TestCase
         $this->assertEquals($expectedOutput, file_get_contents($this->path('hello-world.out')));
     }
 
-    /** @dataProvider providesTemplates */
-    public function test_it_generates_a_file_to_a_separate_output_filesystem(Compiler $compiler, string $template, array $data, string $expectedOutput): void
-    {
-        $this->getCanonInstance($compiler, $filesystem = new Filesystem(new InMemoryFilesystemAdapter()))->generate($template, 'hello-world.out', $data);
-        $this->assertTrue($filesystem->fileExists('hello-world.out'));
-    }
-
     private function path(string $path): string
     {
         return __DIR__.'/output/'.ltrim($path, '/');
     }
 
-    private function getCanonInstance(Compiler $compiler, Filesystem $outputFilesystem = null): Canon
+    private function getCanonInstance(Compiler $compiler): Canon
     {
         return new Canon(
             new Filesystem(new LocalFilesystemAdapter($this->path('/'))),
             $compiler,
-            $outputFilesystem
         );
     }
 
